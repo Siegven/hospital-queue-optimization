@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# ML artifacts
+models/
+*.h5
+*.pkl
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
