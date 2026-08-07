@@ -87,13 +87,13 @@ def normalize_ed_triage_dataset(dataset: pd.DataFrame) -> pd.DataFrame:
         {
             "age": pd.to_numeric(dataset.get("age"), errors="coerce"),
             "heart_rate": pd.to_numeric(dataset.get("PulseRate"), errors="coerce"),
-            "systolic_blood_pressure": pd.to_numeric(dataset.get("BlooddpressurSystol"), errors="coerce"),
+            "systolic_blood_pressure": pd.to_numeric(dataset.get("BloodPressureSystol"), errors="coerce"),
             "oxygen_saturation": pd.to_numeric(dataset.get("O2Saturation"), errors="coerce"),
             "body_temperature": pd.to_numeric(dataset.get("Temperature"), errors="coerce"),
             "pain_level": pd.to_numeric(dataset.get("PainGrade"), errors="coerce"),
             "chronic_disease_count": pd.to_numeric(dataset.get("ref_specialist"), errors="coerce"),
             "previous_er_visits": pd.to_numeric(dataset.get("operational_patient"), errors="coerce"),
-            "arrival_mode": pd.to_numeric(dataset.get("Source"), errors="coerce").map(SOURCE_TO_ARRIVAL_MODE),
+            "arrival_mode": dataset.get("Source").map(SOURCE_TO_ARRIVAL_MODE),
             # TriageGrade is 1-5 with 1 as most urgent; the app uses 0-3 with 3 as most urgent.
             "triage_level": 4 - pd.to_numeric(dataset.get("TriageGrade"), errors="coerce"),
         }
