@@ -15,11 +15,14 @@ function App() {
   const loadPatients = async () => {
     try {
       const response = await fetch(`${API_BASE}/patients`)
+      if (!response.ok) {
+        throw new Error("Unable to load patients from the queue.")
+      }
       const data = await response.json()
       setPatients(data.active ?? [])
       setResolvedPatients(data.resolved ?? [])
     } catch (loadError) {
-      setError("Unable to load patients from the queue.")
+      setError(loadError.message)
     }
   }
 
